@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostrar y ocultar imagen</title>
+</head>
+<body>
+    <button id="botonMostrar">Mostrar Imagen</button>    
+    <button id="botonOcultar">Ocultar Imagen</button>
+  
+    <br>
+
+    <img id="n" src="./igger.png" alt="Imagen a mostrar">
+
+    <!-- En un proyecto la mezcla de versiones es CAOTICO, tener cuidado -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
+    crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#botonOcultar").click(function(event){
+                event.preventDefault()
+                $("#n").hide("slow")
+            })
+
+            //si pones $("botonMostrar") te buscará una etiqueta que se llame botonMostrar
+            // pero si pones $("#botonMostrar") te buscará un elemento que tenga ese id
+            $("#botonMostrar").click(function(event){
+                event.preventDefault()
+                $("#n").show(2500)
+            })
+        })        
+    </script>
+</body>
+</html>
+
+
+<!-- 
+2º) Inicialmente muestra en pantalla una imagen y dos botones “Mostrar Imagen” y “Ocultar
+Imagen”. Al pinchar sobre el botón de “Mostrar Imagen” debe aparecer una imagen con efecto 
+show(2500) y al pinchar sobre “Ocultar Imagen” debe desaparecer la imagen con efecto
+hide(“slow”).
+-->
