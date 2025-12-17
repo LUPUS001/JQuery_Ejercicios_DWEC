@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo cambiar color jQuery</title>
+</head>
+<body>
+  
+  <div class="capas">Primera capa del documento</div>
+  <div class="capas">Segunda capa del documento</div>
+  <div class="capas">Tercera capa del documento</div>
+
+  <!-- Uso una versión más antigua de JQuery para poder utilizar el método .size() -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+        let divs = $('div')
+        let capas = $(".capas")
+
+        // Parte A: Mostrar alerta con el número de capas usando size()
+        alert("Número de capas creadas: " + $("div").size()); //versión directa
+        alert("Hemos creado " + divs.size() + " capas (con size)") //versión usando una variable
+        
+        // Mostrando la alerta pero usando length
+        alert("Hemos creado " + capas.length + " capas (con length)")
+
+        // Parte B: Cambiar el color de letra a verde
+        $("div").css("color", "green")
+
+    });
+
+  </script>
+</body>
+</html>
+
+<!-- 
+1º) Crear las siguientes capas(div) con el texto:
+    Primera capa del documento
+    Segunda capa del documento
+    Tercera capa del documento
+    Utilizando el método size() de jQuery muestra con alert el número de capas que hemos creado.
+
+Aplicando estilos cambia el color de la letra de todas las capas para que salga en verde.
+-->
