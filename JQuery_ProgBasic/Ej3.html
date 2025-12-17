@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambiar de color el párrafo</title>
+</head>
+<body>
+    <p id="parrafoColor">
+        Cambio de color 
+    </p>
+    
+    <input type="radio" name="color" value="red">Rojo<br>
+    <input type="radio" name="color" value="blue">Azul<br>
+    <input type="radio" name="color" value="green">Verde<br>
+
+    <!-- <input type="radio" name="habitacion" value="simple">Simple<br>
+    <input type="radio" name="habitacion" value="doble" checked>Doble<br>
+    <input type="radio" name="habitacion" value="triple">Triple
+    <hr>
+    <input type="radio" name="regimen" value="alojamiento">Sólo alojamiento<br>
+    <input type="radio" name="regimen" value="desayuno">Desayuno<br>
+    <input type="radio" name="regimen" value="media" checked>Media pensión<br>
+    <input type="radio" name="regimen" value="completa" checked>Pensión completa -->
+
+    <!-- En un proyecto la mezcla de versiones es CAOTICO, tener cuidado -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
+    crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Seleccionamos todos los inputs de la clase color
+            $("input[name='color']").click(function(){
+
+                // 1. Obtenemos el valor del radio pulsado usando $(this) y .attr()
+                let colorElegido = $(this).attr("value")
+
+                // 2. Aplicamos el color seleccionado en el radio button al párrado usando .css()
+                $("#parrafoColor").css("background-color", colorElegido)
+            })
+        })        
+    </script>
+</body>
+</html>
+
+<!-- 
+Si queremos complicarnos, podemos hacerlo de la siguiente manera:
+$("input[name='color']").click(function(){
+    let valor = $(this).attr("value"); // Aquí recibes "rojo"
+    
+    if(valor == "rojo") {
+        $("#parrafoColor").css("background-color", "red");
+    } else if (valor == "azul") {
+        $("#parrafoColor").css("background-color", "blue");
+    } else if (valor == "verde") {
+        $("#parrafoColor").css("background-color", "green");
+    }
+});
+-->
+
+
+<!-- 
+3º) Crea un párrafo con el siguiente texto:
+
+Este párrafo cambiará de color según el valor del radio seleccionado.
+Añade tres botones de tipo radio con los colores: rojo,azul y verde. Los radio serán excluyentes
+sólo puedo elegir una opción de las tres.
+Cuando seleccione un radio el color de fondo del párrafo cambiará a rojo, azul o verde , según
+el valor del radio escogido. 
+-->
