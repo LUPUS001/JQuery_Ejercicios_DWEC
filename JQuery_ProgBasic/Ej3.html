@@ -47,17 +47,22 @@
 
 <!-- 
 Si queremos complicarnos, podemos hacerlo de la siguiente manera:
-$("input[name='color']").click(function(){
-    let valor = $(this).attr("value"); // Aquí recibes "rojo"
-    
-    if(valor == "rojo") {
-        $("#parrafoColor").css("background-color", "red");
-    } else if (valor == "azul") {
-        $("#parrafoColor").css("background-color", "blue");
-    } else if (valor == "verde") {
-        $("#parrafoColor").css("background-color", "green");
-    }
-});
+
+    <input type="radio" name="color" value="rojo">Rojo<br>
+    <input type="radio" name="color" value="azul">Azul<br>
+    <input type="radio" name="color" value="verde">Verde<br>
+
+    $("input[name='color']").click(function(){
+        let valor = $(this).attr("value"); // Aquí recibes "rojo"
+        
+        if(valor == "rojo") {
+            $("#parrafoColor").css("background-color", "red");
+        } else if (valor == "azul") {
+            $("#parrafoColor").css("background-color", "blue");
+        } else if (valor == "verde") {
+            $("#parrafoColor").css("background-color", "green");
+        }
+    });
 -->
 
 
