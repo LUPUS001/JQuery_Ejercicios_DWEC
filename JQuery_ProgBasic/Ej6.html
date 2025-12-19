@@ -7,6 +7,8 @@
     <title>Ejercicio 6</title>
 </head>
 <body>
+
+    <img id="fotoAMostrar" src="igger.png" alt="Imagen a mostrar" width="200">
     
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
@@ -15,6 +17,14 @@
     <script>
         $(document).ready(function(){
 
+            // Estructura de Callback ("Callback Hell" o anidamiento)
+            $("#fotoAMostrar").fadeOut(2000, function(){
+                // Esto se ejecuta cuando termina el fadeOut
+                $(this).slideDown(3000, function(){
+                    // Esto se ejecuta cuando termina el slideDown
+                    $(this).slideUp(1000);
+                });
+            });
         })
     </script>
 </body>
