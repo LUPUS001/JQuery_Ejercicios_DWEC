@@ -7,15 +7,36 @@
     <title>Ejercicio 4</title>
 </head>
 <body>
+    <form>
+        <input type="text" id="num1" placeholder="Número 1">
+        <input type="text" id="num2" placeholder="Número 2">
+
+        <input type="checkbox" id="checkSuma"> Sumar
+        
+        <div id="resultadoContainer"></div>
+    </form>
     
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
     crossorigin="anonymous"></script>
 
     <script>
-        $(document).ready(function(){
-
-        })
+        $("#checkSuma").change(function(){
+            if($(this).prop("checked")){
+                // 1. Obtener valores
+                var n1 = parseInt($("#num1").val()) 
+                var n2 = parseInt($("#num2").val()) 
+                var suma = n1 + n2;
+                
+                // 2. Crear campo dinámicamente
+                $("#resultadoContainer").html(
+                    '<br> <input type="text" id="campoResultado" value="' + suma + '">'
+                );
+            } else {
+                // 3. Eliminar campo
+                $("#campoResultado").remove();
+            }
+        });
     </script>
 </body>
 </html>
