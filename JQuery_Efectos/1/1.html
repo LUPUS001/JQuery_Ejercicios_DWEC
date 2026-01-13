@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Botones</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <button id="btnFundido">Fundido</button>
+    <div id="fundido"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btnFundido").click(function(){
+                $("#fundido").fadeOut(function(){
+                   $(this).fadeIn();
+                }); 
+            })
+        })
+    </script>
+</body>
+</html>
