@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3 - XML</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+
+    <button id="btnXml">Mostrar fichero XML</button>
+    <div id="cajaXml" style="border: 1px solid blue;"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btnXml").click(function(){
+                
+                // Pide el archivo datos.xml
+                $.get("datos.xml", function(xml){
+                    
+                    // Limpia la caja por si le das varias veces
+                    $("#cajaXml").html(""); 
+
+                    // Busca cada etiqueta 'contacto' y la añade al div
+                    $(xml).find("contacto").each(function(){
+                        var nombre = $(this).text();
+                        $("#cajaXml").append(nombre + "<br>");
+                    });
+
+                });
+            });
+        });
+    </script>
+</body>
+</html>

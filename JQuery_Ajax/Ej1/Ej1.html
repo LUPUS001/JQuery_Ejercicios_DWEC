@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1 AJAX Simplificado</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+
+    <button id="btn">Mostrar fichero</button>
+    <div id="caja"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                // Lo mínimo para que $.ajax funcione:
+                $.ajax({
+                    url: "mensaje.txt",
+                    success: function(resultado){
+                        $("#caja").html(resultado);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

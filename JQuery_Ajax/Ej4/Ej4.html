@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4 - PHP</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+
+    <button id="btnPhp">Enviar datos a PHP</button>
+    <div id="cajaPhp" style="border: 1px solid red; padding: 10px; margin-top: 10px;"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btnPhp").click(function(){
+                
+                // Envia el dato { nombre: "TuNombre" } al archivo saludo.php
+                $.post("saludo.php", { nombre: "Estudiante" }, function(respuesta){
+                    
+                    // Mete la respuesta del PHP en el div
+                    $("#cajaPhp").html(respuesta);
+                    
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>
