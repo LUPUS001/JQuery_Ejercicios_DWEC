@@ -7,13 +7,13 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 </head>
 <body>
-    <img id="imgEfectos" src="./hq720.jpg"> <br>
+    <img id="imgEfectos" src="./hq720.jpg" style="border: 1px solid black;"> <br>
     <button id="btnOcultar2">Ocultar</button>
     <button id="btnMostrar">Mostrar</button>
     <button id="btnFundido">Fundido</button>
     <button id="btnAnimado">Animado</button>
     <button id="btnAnimar">Animado</button>
-    <button id="btn">Animado</button>
+    <button id="btnDeslizar">Deslizar</button>
 
     <script>
         $(document).ready(function(){
@@ -35,26 +35,29 @@
                 e.preventDefault()
                 $("#imgEfectos").animate({
                    'border-bottom-width': "20",
-                    'font-size': '25pt'
+                    'width': '25pt',
+                    'opacity': '5'
                 }); 
             })
             $("#restaurar").click(function(e){
                 e.preventDefault()
-                $("h1").css({
+                $("imgEfectos").css({
                     'border-bottom-width': "1",
                     'font-size': '15pt'
                 });
             });
-            $("#btnDeslizar").click(function(){
-             $("#miFoto").slideUp(1000);
-            });
+            
 
             // Botón 3: Animate (Cuidado con las llaves {})
             $("#btnAnimar").click(function(){
-            $("#miFoto").animate({ 
+            $("#imgEfectos").animate({ 
                 width: "500px",
                 marginLeft: "50px"
             }, 2000);
+            });
+
+            $("#btnDeslizar").click(function(){
+             $("#imgEfectos").slideUp(1000);
             });
         })
     </script>
