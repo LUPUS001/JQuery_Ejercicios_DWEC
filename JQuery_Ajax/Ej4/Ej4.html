@@ -15,13 +15,11 @@
             $("#btnPhp").click(function(){
                 
                 // Envia el dato { nombre: "TuNombre" } al archivo saludo.php
-                $.post("saludo.php", { nombre: "Estudiante" }, function(respuesta){
+                $.post("saludo.php", { nombre: "Mati" }, function(respuesta){
                     
                     // Mete la respuesta del PHP en el div
-                    $("#cajaPhp").html(respuesta);
-                    
+                    $("#cajaPhp").html(respuesta);                    
                 });
-
             });
         });
     </script>

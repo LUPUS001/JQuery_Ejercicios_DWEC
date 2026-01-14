@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
+    crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $("#checkSuma").change(function(){
+            if($(this).prop("checked")){
+                // 1. Obtener valores
+                var n1 = parseInt($("#num1").val()) 
+                var n2 = parseInt($("#num2").val()) 
+                var suma = n1 + n2;
+                
+                // 2. Crear campo dinámicamente
+                $("#resultadoContainer").html(
+                    '<br> Resultado:<input type="text" id="campoResultado" value="' + suma + '">'
+                );
+            } else {
+                // 3. Eliminar campo
+                $("#campoResultado").remove();
+            }
+        });
+        })        
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="num1" placeholder="Número 1"> <!--campo de texto -->
+        <input type="number" id="num2" placeholder="Número 2"> <!--campo de números 'number' porque es más cómodo (ha sido una elección personal) -->
+
+        <input type="checkbox" id="checkSuma"> Sumar
+        
+        <div id="resultadoContainer"></div>
+    </form>
+</body>
+</html>
+
+<!-- 
+4º) Crea un formulario que contendrá inicialmente dos campos de texto y un checkbox. En los
+campos de texto introduciremos dos números para sumarlos. Si activamos el checkbox nos
+debe crear dinámicamente un nuevo campo de tipo texto en el que mostraremos el resultado
+de la suma de los dos números. Si desactivamos el checkbox el nuevo campo que hemos
+creado debe desaparecer.
+Nota: En versiones superiores de la librería el método attr(“checked”) no funciona
+correctamente, hay que sustituir el “attr” por “prop”
+-->
