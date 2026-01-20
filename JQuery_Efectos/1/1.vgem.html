@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica 3 - jQuery Efectos</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    
+    <style>
+        /* Estilos básicos para los ejercicios */
+        body { font-family: sans-serif; padding: 20px; }
+        .box { width: 100px; height: 100px; background-color: red; position: relative; margin: 20px; }
+        .blue-bg { background-color: lightblue; padding: 20px; text-align: center; display: none; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Ejercicios jQuery</h1>
+
+    <div id="workspace"></div>
+
+    <h3>Ejercicio 1</h3>
+    <button id="btn-hide">Hide</button>
+    <button id="btn-show">Show</button>
+    <button id="btn-fade">FadeToggle</button>
+    <button id="btn-slide">SlideUp</button>
+    <br>
+    <img id="miImagen" src="https://via.placeholder.com/150" alt="Placeholder">
+    <script>
+        $(document).ready(function() {
+            $("#btn-hide").click(function(){ $("#miImagen").hide("slow"); });
+            $("#btn-show").click(function(){ $("#miImagen").show("fast"); });
+            $("#btn-fade").click(function(){ $("#miImagen").fadeToggle(1000); }); // 1000ms = 1 segundo
+            $("#btn-slide").click(function(){ $("#miImagen").slideUp(); });
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica 3 - jQuery Efectos</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        /* Añadido para que la imagen no sea gigante y se vea bien el efecto */
+        img { max-width: 200px; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Ejercicio 1: Botonera completa</h1>
+
+    <button id="btn-hide">Hide (Ocultar)</button>
+    <button id="btn-show">Show (Mostrar)</button>
+    <button id="btn-fade">Fade (Fundido)</button>
+    <button id="btn-slide">Slide (Deslizar)</button>
+    <button id="btn-animate">Animate (Animar)</button>
+    
+    <br>
+    <img id="miImagen" src="https://via.placeholder.com/150" alt="Placeholder">
+
+    <script>
+        $(document).ready(function() {
+            // Efectos básicos
+            $("#btn-hide").click(function(){ $("#miImagen").hide("slow"); });
+            $("#btn-show").click(function(){ $("#miImagen").show("fast"); });
+            
+            // Efecto Toggle (Detecta estado automático)
+            $("#btn-fade").click(function(){ $("#miImagen").fadeToggle(1000); });
+            
+            // CORREGIDO: Usamos slideToggle para que suba y baje
+            $("#btn-slide").click(function(){ $("#miImagen").slideToggle(); });
+
+            // AÑADIDO: El animate que faltaba en el ejercicio 1
+            $("#btn-animate").click(function(){ 
+                $("#miImagen").animate({
+                    width: "300px",
+                    opacity: 0.5,
+                    marginLeft: "50px"
+                }, 1000); // Vuelve al estado original si recargas o creas otro botón de "reset"
+            });
+        });
+    </script>
+</body>
+-->

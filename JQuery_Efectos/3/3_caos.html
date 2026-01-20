@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    
+    <!-- Versión con funcion completa (arriba, abajo, izquierda y derecha) -->
+    <!-- <script src="./3.js"></script> -->
+</head>
+<body>
+    <h3>Ejercicio 3</h3>
+    <button id="btn-start">Iniciar Efecto</button>
+    <button id="btn-stop">Parar Efecto</button>
+    <div id="cubo" style="width:50px; height:50px; background:green; position:relative;"></div>
+    <br>
+    <div id="cilindro" style="width:50px; height:50px; border-radius: 100px; background:green; position:relative;"></div>
+    <br>
+    <div id="equilatero" style="width: 0; height: 0; border-left: 25px solid transparent; border-right: 25px solid transparent; border-bottom: 50px solid green; position: relative;"></div>
+    <script>
+        $(document).ready(function(){
+    
+    // TRAYECTORIA CÍRCULO (Simulada en 4 puntos)
+    function moverCilindro() {
+        $("#cilindro")
+            .animate({left: "+=100px", top: "-=50px"}, 800)
+            .animate({left: "+=100px", top: "+=50px"}, 800)
+            .animate({left: "-=100px", top: "+=50px"}, 800)
+            .animate({left: "-=100px", top: "-=50px"}, 800, function(){
+                moverCilindro(); 
+            });
+    }
+
+    // TRAYECTORIA TRIÁNGULO
+    function moverEquilatero() {
+        $("#equilatero")
+            .animate({left: "+=100px", top: "-=150px"}, 1000) // Sube en diagonal
+            .animate({left: "+=100px", top: "+=150px"}, 1000) // Baja en diagonal
+            .animate({left: "-=200px"}, 1000, function(){     // Cierra la base
+                moverEquilatero(); 
+            });
+    }
+
+    // TRAYECTORIA CUADRADO (Cubo)
+    function moverCubo() {
+        $("#cubo")
+            .animate({left: "+=200px"}, 1000)
+            .animate({top: "+=200px"}, 1000)
+            .animate({left: "-=200px"}, 1000)
+            .animate({top: "-=200px"}, 1000, function(){
+                moverCubo();
+            });
+    }
+
+    // BOTONES (Controlan todos a la vez)
+    $("#btn-start").click(function(){
+        // Solo iniciamos si no están ya en movimiento para evitar aceleraciones locas
+        moverCubo();
+        moverCilindro();
+        moverEquilatero();
+    });
+
+    $("#btn-stop").click(function(){
+        $("#cubo, #cilindro, #equilatero").stop(true, false);
+    });
+});
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+3º) En la pantalla debe aparecer un cubo que se mueva haciendo la trayectoria de un
+cuadrado. En la página habrán dos botones uno será “Parar Efecto” que parará todos los
+efectos que tenga asignado el cubo y el otro será “Iniciar Efecto” que hará que se reanude su
+movimiento.
+-->

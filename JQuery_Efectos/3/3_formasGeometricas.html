@@ -14,10 +14,11 @@
     <h3>Ejercicio 3</h3>
     <button id="btn-start">Iniciar Efecto</button>
     <button id="btn-stop">Parar Efecto</button>
-    
     <div id="cubo" style="width:50px; height:50px; background:green; position:relative;"></div>
-    
-
+    <br>
+    <div id="cilindro" style="width:50px; height:50px; border-radius: 100px; background:green; position:relative;"></div>
+    <br>
+    <div id="equilatero" style="width: 0; height: 0; border-left: 25px solid transparent; border-right: 25px solid transparent; border-bottom: 50px solid green; position: relative;"></div>
     <script>
         $(document).ready(function(){
             function moverCubo() {
@@ -36,8 +37,37 @@
                 // stop(true, false) limpia la cola de animaciones pendientes y detiene la actual
                 $("#cubo").stop(true, false);
             });
-        })
         
+            function moverCilindro() {
+                $("#cilindro")
+                    .animate({left: "+=200px"}, 1000, function(){                        
+                        moverCilindro(); 
+                    }); 
+            }
+
+            $("#btn-start").click(function(){
+                moverCilindro();
+            });
+
+            $("#btn-stop").click(function(){
+                $("#cilindro").stop(true, false);
+            });
+
+            function moverEquilatero() {
+                $("#equilatero")
+                    .animate({left: "+=200px"}, 1000, function(){
+                        moverEquilatero(); 
+                    }); 
+            }
+
+            $("#btn-start").click(function(){
+                moverEquilatero();
+            });
+
+            $("#btn-stop").click(function(){
+                $("#equilatero").stop(true, false);
+            });
+        })
     </script>
 </body>
 </html>

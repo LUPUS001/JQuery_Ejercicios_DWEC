@@ -20,17 +20,21 @@
             $("#btnOcultar").click(function(){
                 $("#imgEfectos").css("display", "none"); 
             })
+
             $("#btnOcultar2").click(function(){
                 $("#imgEfectos").hide("slow")
             })
+
             $("#btnMostrar").click(function(){
                 $("#imgEfectos").css("display", "block"); 
             })
+
             $("#btnFundido").click(function(){
                 $("#imgEfectos").fadeOut(function(){
                    $(this).fadeIn();
                 }); 
             })
+
             $("#btnAnimado").click(function(e){
                 e.preventDefault()
                 $("#imgEfectos").animate({
@@ -39,6 +43,7 @@
                     'opacity': '5'
                 }); 
             })
+
             $("#restaurar").click(function(e){
                 e.preventDefault()
                 $("imgEfectos").css({
@@ -47,12 +52,10 @@
                 });
             });
             
-
-            // Botón 3: Animate (Cuidado con las llaves {})
             $("#btnAnimar").click(function(){
             $("#imgEfectos").animate({ 
                 width: "500px",
-                marginLeft: "50px"
+                marginLeft: "500px"
             }, 2000);
             });
 
@@ -69,4 +72,19 @@
 1º) Mediante botones haz que se puedan aplicar todos los efectos (básicos, fundido,
 deslizamiento, animate ) sobre una imagen. Ejemplo: botón hide ( al pinchar sobre él se
 ocultará la imagen, así con el resto de efectos).
+-->
+
+<!-- 
+
+.css("display", "X")-> 
+https://desarrolloweb.com/articulos/demo-simple-jquery.html
+
+
+.hide("slow")->
+https://desarrolloweb.com/articulos/efectos-rapidos-jquery.html
+
+.animate ->
+https://desarrolloweb.com/articulos/animate-jquery-animacion.html
+
+
 -->

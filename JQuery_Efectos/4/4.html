@@ -6,13 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio</title>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+
+    <!-- Importante importar la libreria o no funcionará el ejercicio -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 </head>
 <body>
     
+    <h1>Encabezado 1</h1>
+    <h1 id="igger">Nate Higgers</h1>
+    <h1 id="vegettita">Vegetta777</h1>
 
     <script>
         $(document).ready(function(){
-
+            $("#igger").click(function(){
+                $(this).animate({color: "red"})
+            })
+            $("h1").click(function(){
+                // Solo funciona si importaste jQuery UI
+                $(this).animate({
+                    color: "blue",
+                }, 1000);
+            });
+            $("#vegettita").click(function(){
+                $(this).animate({color: "purple"}, 1000)
+            })
         })
     </script>
 </body>
