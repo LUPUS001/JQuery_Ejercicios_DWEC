@@ -8,25 +8,28 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 </head>
 <body>
-    <div id="cubo" style="width:50px; height:50px; background:green; position:relative;"></div>    
+    <h3>Ejercicio 5: Cola de Efectos</h3>
+<button id="btn-cola">Ejecutar Cola</button>
+<div id="cuboCola" style="width:50px; height:50px; background:red; position:relative;"></div>
 
     <script>
         $(document).ready(function(){
-            // Usamos el mismo cubo del ejercicio 3 o creamos otro
-            $("#cubo").queue(function(next){
-                $(this).animate({width: "200px"}, 1000); // 1. Animate
-                next(); // Importante: llama al siguiente en la cola
-            });
+            $("#btn-cola").click(function() {
+    $("#cuboCola")
+        // 1. Primer Animate
+        .animate({ left: "+=200px" }, 1000)
+        .delay(500) // Pausa para ver el efecto
 
-            $("#cubo").delay(1000).queue(function(next){
-                $(this).css("background-color", "yellow"); // 2. CSS (Cambio brusco, no animado)
-                next();
-            });
+        // 2. Método CSS dentro de la cola
+        .queue(function(next) {
+            $(this).css("background-color", "blue");
+            next(); // ¡IMPORTANTE! Indica a jQuery que pase al siguiente efecto
+        })
+        .delay(500)
 
-            $("#cubo").delay(1000).queue(function(next){
-                $(this).animate({height: "200px"}, 1000); // 3. Animate
-                next();
-            });
+        // 3. Segundo Animate
+        .animate({ top: "+=100px", width: "100px" }, 1000);
+});
         })
     </script>
 </body>
