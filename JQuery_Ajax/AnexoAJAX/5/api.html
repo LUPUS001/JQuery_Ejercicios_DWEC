@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5 - API Países</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <style>
+        .error { color: red; font-weight: bold; border: 1px solid red; padding: 10px;}
+        .pais { border-bottom: 1px solid #ccc; padding: 5px; }
+    </style>
+</head>
+<body>
+
+    <button id="btnPaises">Cargar Países de Europa</button>
+    <div id="listaPaises"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btnPaises").click(function(){
+                
+                $("#listaPaises").html("Cargando...");
+
+                // URL ACTUALIZADA: https://restcountries.com/v3.1/region/europe
+                // Si quieres probar el error, pon una URL inventada.
+                var urlApi = "https://restcountries.com/v3.1/region/europe";
+
+                // Usamos getJSON
+                $.getJSON(urlApi, function(datos){
+                    // Esto se ejecuta si todo va BIEN
+                    $("#listaPaises").html(""); // Limpiar
+                    
+                    // Recorremos los países recibidos
+                    $.each(datos, function(indice, pais){
+                        $("#listaPaises").append(
+                            "<div class='pais'>" + 
+                            "<b>" + pais.name.common + "</b> - Capital: " + pais.capital + 
+                            "</div>"
+                        );
+                    });
+
+                })
+                .fail(function(jqxhr, textStatus, error){
+                    // Esto se ejecuta si hay ERROR (ej: url mal, servidor caído)
+                    var mensaje = "Error producido: " + textStatus + ", " + error;
+                    var codigo = "Código: " + jqxhr.status; // Ej: 404
+                    
+                    $("#listaPaises").html(
+                        "<div class='error'>" + codigo + "<br>" + mensaje + "</div>"
+                    );
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>

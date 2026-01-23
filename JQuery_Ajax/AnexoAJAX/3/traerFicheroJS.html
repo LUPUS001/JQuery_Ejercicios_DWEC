@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3 - Cargar JS</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <button id="btnCargarJs">Cargar y Ejecutar JS</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#btnCargarJs").click(function(){
+                
+                $.ajax({
+                    url: "codigo.js",
+                    dataType: "script", // Esto hace la magia: lo descarga y lo ejecuta
+                    success: function(){
+                        console.log("Carga completada");
+                    },
+                    error: function(xhr){
+                        alert("Error cargando script: " + xhr.status);
+                    }
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>

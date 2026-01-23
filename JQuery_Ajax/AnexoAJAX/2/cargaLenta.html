@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2 - Loading</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <style>
+        #resultado { margin-top: 10px; font-weight: bold; font-size: 1.2em;}
+        /* El loader empieza oculto */
+        #cargando { display: none; color: blue; }
+    </style>
+</head>
+<body>
+
+    <button id="btnFecha">Pedir Fecha (Lento)</button>
+    <button id="btnFallo">Probar Fallo 404</button>
+
+    <br><br>
+
+    <div id="cargando">
+        <img src="https://i.gifer.com/ZZ5H.gif" width="20" alt="loading"> 
+        Cargando datos del servidor...
+    </div>
+
+    <div id="resultado"></div>
+
+    <script>
+        $(document).ready(function(){
+
+            function pedirDatos(urlDestino){
+                $.ajax({
+                    url: urlDestino,
+                    
+                    // Antes de enviar: Mostrar carga [cite: 4116]
+                    beforeSend: function(){
+                        $("#cargando").show(); 
+                        $("#resultado").html(""); // Limpiar anterior
+                    },
+
+                    success: function(respuesta){
+                        // Ocultar carga y mostrar info [cite: 4117]
+                        $("#cargando").hide();
+                        $("#resultado").html(respuesta).css("color", "black");
+                    },
+
+                    error: function(xhr){
+                        // Ocultar carga y mostrar CÓDIGO de error [cite: 4118]
+                        $("#cargando").hide();
+                        $("#resultado").html("Error producido. Código: " + xhr.status).css("color", "red");
+                    }
+                });
+            }
+
+            $("#btnFecha").click(function(){
+                pedirDatos("fecha.php");
+            });
+
+            $("#btnFallo").click(function(){
+                pedirDatos("archivo_que_no_existe.php");
+            });
+
+        });
+    </script>
+</body>
+</html>

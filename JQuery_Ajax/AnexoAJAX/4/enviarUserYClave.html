@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4 - Serialize</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    
+    <form id="miFormulario">
+        Usuario: <input type="text" name="usuario" placeholder="pepe"><br>
+        Clave: <input type="password" name="clave" placeholder="hola"><br>
+        <button type="button" id="btnEnviar">Enviar Datos</button>
+    </form>
+
+    <div id="resultadoLogin"></div>
+
+    <script>
+        $(document).ready(function(){
+            $("#btnEnviar").click(function(){
+                
+                // .serialize() coge todos los inputs del form y crea un string
+                // tipo: "usuario=pepe&clave=hola"
+                var datosFormulario = $("#miFormulario").serialize();
+                
+                // Enviamos con $.get como pide el ejercicio
+                $.get("login.php", datosFormulario, function(respuesta){
+                    
+                    $("#resultadoLogin").html(respuesta);
+                    
+                    if(respuesta == "usuario correcto"){
+                        $("#resultadoLogin").css("color", "green");
+                    } else {
+                        $("#resultadoLogin").css("color", "red");
+                    }
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>
