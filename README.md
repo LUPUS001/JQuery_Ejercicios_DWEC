@@ -10,7 +10,9 @@ Si quieres hacerlo con xampp
 ### XAMPP
 ### Instalar XAMPP  
 sudo wget https://sourceforge.net/projects/xampp/files/XAMPP%20Linux/8.1.25/xampp-linux-x64-8.1.25-0-installer.run
+
 sudo chmod 777 xampp-linux-x64-8.1.25-0-installer.run 
+
 sudo ./xampp-linux-x64-8.1.25-0-installer.run 
 
 ### Iniciar XAMPP y detener apache2 para que no colisionen.
