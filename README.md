@@ -4,7 +4,8 @@ o
 http://127.0.0.1:5500/JQuery_Ajax/
 http://127.0.0.1:5500/JQuery_Efectos/
 
-Si quieres hacerlo con xampp
+Aunque recuerda una cosa MUY IMPORTANTE, VS Code Live Server solo entiende HTML, CSS y JavaScript. No sabe leer PHP.
+Si quieres hacerlo con xampp --> 
 
 
 ### XAMPP
