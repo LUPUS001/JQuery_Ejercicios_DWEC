@@ -1,4 +1,4 @@
-### Si te da pereza iniciar xampp, puedes usar "Live Server"
+### Si te da pereza iniciar xampp, puedes usar "Live Server" (funciona gracias a VS Code)
 http://127.0.0.1:5500/
 o
 http://127.0.0.1:5500/JQuery_Ajax/
