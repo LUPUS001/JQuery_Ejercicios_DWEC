@@ -15,7 +15,6 @@ sudo ./xampp-linux-x64-8.1.25-0-installer.run
 
 ### Iniciar XAMPP y detener apache2 para que no colisionen.
 sudo systemctl stop apache2
-
 sudo /opt/lampp/lampp stop
 sudo lsof -i :3306
 sudo systemctl stop mysql
