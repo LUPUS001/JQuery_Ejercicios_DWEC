@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio jQuery AJAX</title>
+    <style>
+        .container { margin: 20px; padding: 20px; border: 1px solid #ddd; }
+        #resultado { margin-top: 15px; padding: 10px; border: 1px dashed #ccc; background: #f4f4f4; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Título del Ejercicio</h1>
+        
+        <button id="btn-accion">Realizar Acción AJAX</button>
+
+        <div id="resultado">
+            Esperando acción...
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Tu código empieza aquí
+            console.log("jQuery cargado y listo");
+
+            $("#btn-accion").click(function() {
+                // Ejemplo rápido de estructura
+                $("#resultado").text("Cargando...");
+                
+                // $.ajax({ ... });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -22,10 +22,12 @@
         $(document).ready(function(){
             function moverCubo() {
                 $("#cubo")
-                    .animate({left: "+=200px"}, 1000, function(){
-                        // (Opcional) Llamar a la función de nuevo para que sea infinito
-                        moverCubo(); 
-                    }); // Arriba
+                    .animate({left: "+=50px"}, 0.1)
+                    .animate({top: "+=50px"}, 0.1)
+                    .animate({left: "-=50px"}, 0.1)
+                    .animate({top: "-=50px"}, 0.1, function(){
+                        moverCubo();
+                    });
             }
 
             $("#btn-start").click(function(){
