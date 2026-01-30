@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 6 - Mix</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        body { font-family: sans-serif; padding: 30px; text-align: center; }
+        #mensaje { margin-top: 20px; font-size: 1.2em; padding: 10px; display: inline-block;}
+    </style>
+</head>
+<body>
+
+    <h2>Ejercicio 6: Widget (Calendario) + Plugin Propio</h2>
+    
+    <p>Selecciona una fecha:</p>
+    <input type="text" id="datepicker">
+
+    <br><br>
+    
+    <div id="mensaje">Aquí saldrá la fecha seleccionada</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script>
+        // 1. CREAMOS UN PLUGIN SENCILLO: "Parpadear"
+        (function($){
+            $.fn.parpadear = function() {
+                this.fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
+                return this;
+            };
+        })(jQuery);
+
+        $(document).ready(function(){
+            
+            // 2. USAMOS EL WIDGET DATEPICKER
+            $("#datepicker").datepicker({
+                // Evento cuando se elige fecha
+                onSelect: function(fechaTexto) {
+                    
+                    // Actualizamos el texto
+                    $("#mensaje").text("Has seleccionado: " + fechaTexto);
+                    
+                    // 3. USAMOS NUESTRO PLUGIN
+                    $("#mensaje").css("background-color", "lightgreen").parpadear();
+                }
+            });            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4 - Carrusel</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
+    <style>
+        body { background-color: #333; color: white; text-align: center; }
+        .mi-carrusel { width: 60%; margin: 50px auto; }
+        .mi-carrusel img { width: 100%; height: 300px; object-fit: cover; border: 5px solid white; }
+    </style>
+</head>
+<body>
+
+    <h2>Ejercicio 4: Carrusel de Imágenes</h2>
+    
+    <div class="mi-carrusel">
+        <div><img src="https://via.placeholder.com/800x300/ff5733/fff?text=Imagen+1" alt="1"></div>
+        <div><img src="https://via.placeholder.com/800x300/33ff57/fff?text=Imagen+2" alt="2"></div>
+        <div><img src="https://via.placeholder.com/800x300/3357ff/fff?text=Imagen+3" alt="3"></div>
+        <div><img src="https://via.placeholder.com/800x300/f3ff33/000?text=Imagen+4" alt="4"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.mi-carrusel').slick({
+                dots: true,       // Muestra puntitos abajo
+                infinite: true,   // Bucle infinito
+                speed: 500,       // Velocidad transición
+                slidesToShow: 1,  // Cuántas ver a la vez
+                autoplay: true,   // Se mueve solo
+                autoplaySpeed: 2000
+            });
+        });
+    </script>
+</body>
+</html>
