@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1 - Texto y Errores</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <style>
+        #contenedor { border: 1px solid #ccc; padding: 10px; margin-top: 10px; min-height: 50px;}
+        .error { color: red; font-weight: bold; }
+        .exito { color: green; }
+    </style>
+</head>
+<body>
+
+    <button id="btnCargar">Cargar Fichero</button>
+    <button id="btnError">Forzar Error (Carga archivo inexistente)</button>
+    
+    <div id="contenedor">El contenido aparecerá aquí...</div>
+
+    <script>
+        $(document).ready(function(){
+            
+            // Función genérica para cargar
+            function cargarArchivo(nombreArchivo) {
+                $.ajax({
+                    url: nombreArchivo,
+                    dataType: "text",
+                    
+                    success: function(respuesta){
+                        // Si todo va bien [cite: 4113]
+                        $("#contenedor").html(respuesta).addClass("exito").removeClass("error");
+                    },
+                    
+                    error: function(xhr, status, error){
+                        // Si falla, mensaje general [cite: 4114]
+                        $("#contenedor").html("¡Error General! No se ha podido realizar la transferencia.")
+                                      .addClass("error").removeClass("exito");
+                    }
+                });
+            }
+
+            // Botón correcto
+            $("#btnCargar").click(function(){
+                cargarArchivo("texto.txt");
+            });
+
+            // Botón para probar el fallo (pide un archivo que no existe)
+            $("#btnError").click(function(){
+                cargarArchivo("no_existe.txt");
+            });
+
+        });
+    </script>
+</body>
+</html>
