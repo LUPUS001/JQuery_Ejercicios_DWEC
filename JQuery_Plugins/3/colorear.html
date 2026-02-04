@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <title>Ejercicio</title>
+</head>
+<body>
+    <p id="pPred">Soy un texto con configuración por defecto (Rojo/Blanco).</p>
+    <p id="pPers">Soy un texto con configuración personalizada</p>
+    <p id="pMeOculto">Este texto pronto será ilegible</p>
+    <button id="btnColorear">Aplicar Colores</button>
+
+    <script>
+        // Colorear con opciones (extend)
+        (function($){
+            $.fn.colorear = function(opciones) {
+                // Configuración por defecto
+                var settings = $.extend({
+                    color: "red",
+                    fondo: "black"
+                }, opciones );
+
+                return this.css({
+                    color: settings.color,
+                    backgroundColor: settings.fondo
+                });
+            };
+        })(jQuery);
+        
+        $(document).ready(function(){
+            $("#btnColorear").click(function(){
+                // Sin opciones (usa default)
+                $("#pPred").colorear();
+                
+                // Con opciones personalizadas
+                $("#pPers").colorear({
+                    color: "white",
+                    fondo: "purple"
+                });
+
+                $("#pMeOculto").colorear({
+                    color: "yellow",
+                    fondo: "yellow"
+                })
+            });
+        })
+    </script>
+</body>
+</html>
