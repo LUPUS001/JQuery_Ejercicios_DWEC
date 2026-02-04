@@ -31,6 +31,7 @@
                     
                     // Recorremos los países recibidos
                     $.each(datos, function(indice, pais){
+                        console.log(pais); // [Este linea no es necesaria, es solo para ver el json] Mira esto en la consola del navegador (F12) 
                         $("#listaPaises").append(
                             "<div class='pais'>" + 
                             "<b>" + pais.name.common + "</b> - Capital: " + pais.capital + 
