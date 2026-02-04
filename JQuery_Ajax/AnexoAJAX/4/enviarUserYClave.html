@@ -42,3 +42,19 @@
     </script>
 </body>
 </html>
+
+
+<!--
+    Explicación más extensa de .serialize():
+        JQuery busca todos los elementos con el atributo name y crea un string (cadena de texto) con el formato url-encoded
+        El valor de datosFormulario será literalmente: "usuario=pepe&clave=12345"
+
+        ¿Por qué esto es genial?
+        - Ahorro de código: No tienes que ir cogiendo los valores uno por uno con $("#usuario").val(), $("#clave").val(), etc.
+        - Preparado para la URL: Ese formato es exactamente el que espera recibir el archivo login.php a través del método GET.
+        - Seguridad básica de caracteres: Si el usuario escribe espacios o símbolos raros, .serialize() los codifica 
+          automáticamente (por ejemplo, un espacio se convierte en %20) para que no rompan la petición.
+        
+        Si algún día decides cambiar el método de GET a POST (que es más seguro para contraseñas, ya que el GET las muestra en la barra de direcciones 
+        del navegador), el método .serialize() te servirá exactamente igual. Solo tendrías que cambiar $.get por $.post.
+-->
