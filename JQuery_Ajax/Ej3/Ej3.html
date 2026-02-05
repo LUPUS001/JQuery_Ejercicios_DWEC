@@ -8,7 +8,9 @@
 <body>
 
     <button id="btnXml">Mostrar fichero XML</button>
-    <div id="cajaXml" style="border: 1px solid blue;"></div>
+    <div id="cajaXml"></div>
+    
+    <!-- <div id="cajaXml" style="border: 1px solid blue;"></div> -->  <!-- OPCIONAL PARA QUE QUEDE MÁS BONITO -->
 
     <script>
         $(document).ready(function(){
@@ -25,10 +27,111 @@
                         var nombre = $(this).text();
                         $("#cajaXml").append(nombre + "<br>");
                     });
-
                 });
+                // Si lo hicieramos con .html solo mostraría el último:
+                /*
+                    $.ajax({
+                    url: "datos.xml",
+                    success: function(xml){
+                        $(xml).find("contacto").each(function(){
+                            var nombre = $(this).text();
+                            $("#cajaXml").html(nombre);
+                        });
+                    }
+                })
+                */
             });
         });
     </script>
 </body>
 </html>
+
+
+<!-- Este ejercicio sube un escalón porque ya no estamos trayendo un simple texto plano, sino datos estructurados. 
+ 
+        Imagina que el archivo mensaje.txt era un folio escrito a mano, mientras 
+        que datos.xml es una hoja de Excel o una base de datos organizada por etiquetas.
+-->    
+
+<!-- 1. El nuevo método: $.get()
+
+        En el primer ejercicio usamos $.ajax. Aquí usamos $.get.
+
+        ¿Es distinto? No realmente. $.get es otra forma abreviada (como .load) que jQuery ofrece cuando solo quieres 
+        traer datos (hacer una petición tipo GET) sin configurar opciones complejas.
+
+        El parámetro xml dentro de la función es tu variable de entrega (la que antes llamamos resultado).
+-->
+
+<!-- 2. El proceso de "Minado" de datos
+
+        A diferencia de los ejercicios anteriores, aquí no pegamos el contenido directamente. 
+        Si hicieras $("#cajaXml").html(xml), verías un revoltijo de etiquetas. Por eso el código hace lo siguiente:
+            
+        A. Selección y Recorrido (find y each)
+        $(xml).find("contacto").each(function(){ ... });
+
+        -  $(xml): Convertimos el paquete que llegó del servidor en un objeto que jQuery pueda entender.
+        -  .find("contacto"): Como si fuera un buscador, le decimos: "Busca todas las etiquetas que se llamen <contacto>".
+        -  .each(function(){ ... }): Esto es un bucle. Significa: "Por cada contacto que hayas encontrado, repite las siguientes instrucciones".
+
+        B. Extracción de Datos (text)
+        var nombre = $(this).text();
+
+        -  $(this): Se refiere al contacto concreto en el que está el bucle en ese momento.
+        -  .text(): Extrae solo el contenido (el nombre de la persona) y descarta las etiquetas <contacto></contacto>.
+
+        C. Construcción de la Salida (append)
+        $("#cajaXml").append(nombre + "<br>");
+        -  $("#cajaXml"): Selecciona el div donde queremos mostrar los nombres.
+        -  .append(): Añade el nombre al contenido actual del div, sin borrar lo que ya había. El "<br>" es para que cada nombre aparezca en una línea nueva.
+        
+        .append() vs .html(): Esta es la clave.
+        -  .html() borra todo y pone lo nuevo.
+        -  .append() es como "añadir a la lista". Pone el nombre, un salto de línea (<br>), y se prepara para el siguiente. 
+            Si usaras .html(), solo verías el último nombre de la lista porque los anteriores se borrarían.       
+-->
+
+<!-- 
+    Si quisieramos utilizar .ajax en lugar de .get, funciona exactamente igual que el $.get pero con la sintaxis más larga.
+
+    -  $.get es como pedir un "menú del día": rápido y ya configurado para traer datos.
+    -  $.ajax es como pedir "a la carta": puedes configurar cosas extra (como el tiempo de espera, qué hacer si hay un error 404, o enviar cabeceras de seguridad).                 
+-->
+
+
+
+
+<!-- EL SIGUIENTE NIVEL -->
+<!-- Extraer datos específicos
+
+    Normalmente, un XML no tiene solo un nombre, tiene varios datos por cada bloque. Imagina que tu datos.xml es así: 
+    <agenda>
+    <contacto>
+        <nombre>Juan</nombre>
+        <telefono>123456</telefono>
+    </contacto>
+    <contacto>
+        <nombre>María</nombre>
+        <telefono>987654</telefono>
+    </contacto>
+</agenda>
+
+Para sacar ambos datos, tendrías que cambiar el interior de tu bucle así:
+$(xml).find("contacto").each(function(){
+    // Buscamos dentro de CADA contacto sus hijos: nombre y telefono
+    var nom = $(this).find("nombre").text();
+    var tel = $(this).find("telefono").text();
+    
+    // Lo "pegamos" bonito
+    $("#cajaXml").append("<b>" + nom + "</b> - Tel: " + tel + "<br>");
+});
+
+Concepto clave: El Árbol (DOM)
+    Cuando usas .find(), estás trepando por las ramas de un árbol.
+    -  xml es el tronco.
+    -  contacto es la rama principal.
+    -  nombre es una hoja.
+
+Ahora ya no solo estás moviendo archivos, sino que estás extrayendo datos precisos para construir una interfaz.
+-->
