@@ -4,3 +4,17 @@
     <contacto>María</contacto>
     <contacto>Pedro</contacto>
 </agenda>
+
+<!-- Por si pidieran un XML más complejo/completo -->
+<!-- 
+<agenda>
+    <contacto>
+        <nombre>Juan</nombre>
+        <telefono>123456</telefono>
+    </contacto>
+    <contacto>
+        <nombre>María</nombre>
+        <telefono>987654</telefono>
+    </contacto>
+</agenda>
+-->
