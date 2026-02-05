@@ -118,14 +118,14 @@
 </agenda>
 
 Para sacar ambos datos, tendrías que cambiar el interior de tu bucle así:
-$(xml).find("contacto").each(function(){
-    // Buscamos dentro de CADA contacto sus hijos: nombre y telefono
-    var nom = $(this).find("nombre").text();
-    var tel = $(this).find("telefono").text();
-    
-    // Lo "pegamos" bonito
-    $("#cajaXml").append("<b>" + nom + "</b> - Tel: " + tel + "<br>");
-});
+    $(xml).find("contacto").each(function(){
+        // Buscamos dentro de CADA contacto sus hijos: nombre y telefono
+        var nom = $(this).find("nombre").text();
+        var tel = $(this).find("telefono").text();
+        
+        // Lo "pegamos" bonito
+        $("#cajaXml").append("<b>" + nom + "</b> - Tel: " + tel + "<br>");
+    });
 
 Concepto clave: El Árbol (DOM)
     Cuando usas .find(), estás trepando por las ramas de un árbol.
