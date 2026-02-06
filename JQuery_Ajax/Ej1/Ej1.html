@@ -25,3 +25,14 @@
     </script>
 </body>
 </html>
+
+<!-- dentro de la petición AJAX ($.ajax({})), buscamos el archivo que queremos con url: y metemos esta 
+ información en la variable resultado, para luego usar con .html meter estos datos en el div "caja"
+
+Míralo como un proceso de paquetería:
+    El Origen: El contenido está en mensaje.txt (digamos que el texto es "Hola").
+    El Transporte: $.ajax va al servidor y pide el paquete.
+    La Entrega (La variable): Cuando $.ajax vuelve con el dato, necesita un lugar donde "dejarlo" para que tú lo uses. Ese lugar es la variable resultado.
+
+El ejercicio 2 hace prácticamente lo mismo solo que de forma más "automática" la desventaja es que al hacer automático no puede modificar el texto antes de que aparezca en pantalla
+-->

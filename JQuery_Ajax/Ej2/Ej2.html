@@ -14,11 +14,42 @@
     <script>
         $(document).ready(function(){
             $("#btn").click(function(){
-                // Lo mínimo para que $.ajax funcione:
                 $("#caja").load("pagina2.html");
             });
         });
     </script>
-    
 </body>
 </html>
+
+<!-- Este ejercicio es prácticamente el mismo que el anterior, solo que en lugar de utilizar .html (y $.ajax), utilizamos .load
+
+    -  $.ajax + variable: Control total. Recibes el paquete, lo abres, miras si está bien, quizás lo decoras y luego lo pones en la estantería (#caja).
+    -  .load(): Comodidad total. El repartidor entra en tu casa y deja el paquete directamente en la estantería sin que tú lo toques.
+
+La Diferencia Fundamental
+
+    En el Ejercicio 1 ($.ajax + .html): Tú eras el "jefe de orquesta".
+
+        Llamabas al servidor ($.ajax).
+        Recibías los datos en una variable (resultado).
+        Tú decidías manualmente meterlos en la caja (.html(resultado)).
+
+    En el Ejercicio 2 (.load): Tú activas el "piloto automático".
+
+        La función .load() hace todo eso junto por ti.
+        Le estás diciendo: "Busca el fichero 'pagina2.html' y, sin preguntarme nada más, mete todo lo que encuentres directamente dentro de #caja".
+-->
+
+<!-- 
+"Si .load es tan corto, ¿por qué existe la forma larga del Ejercicio 1?".
+
+    Usa .load() (Ejercicio 2) cuando solo quieras "copiar y pegar" HTML de un archivo a tu página. Es rápido y limpio.
+
+    Usa $.ajax (Ejercicio 1) cuando necesites control. Por ejemplo:
+
+        Si antes de mostrar el texto quieres convertirlo a mayúsculas.
+
+        Si quieres leer un archivo de datos (JSON) para hacer cálculos matemáticos antes de pintar nada.
+
+        Si quieres mostrar una animación de "Cargando..." mientras esperas.
+-->

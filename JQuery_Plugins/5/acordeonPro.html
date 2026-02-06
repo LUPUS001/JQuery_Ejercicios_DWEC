@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5 - Acordeón</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        #accordion { width: 80%; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center;">Ejercicio 5: Widget Acordeón (jQuery UI)</h2>
+
+    <div id="accordion">
+        <h3>Sección 1: Introducción</h3>
+        <div>
+            <p>Este es el contenido de la primera sección del acordeón. Se despliega al hacer clic.</p>
+        </div>
+        
+        <h3>Sección 2: Desarrollo</h3>
+        <div>
+            <p>Aquí va más contenido. jQuery UI se encarga de gestionar la animación y los estilos.</p>
+        </div>
+        
+        <h3>Sección 3: Conclusión</h3>
+        <div>
+            <p>Final del ejemplo. El widget acordeón es muy útil para ahorrar espacio en pantalla.</p>
+            <ul>
+                <li>Opción A</li>
+                <li>Opción B</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Inicializar el Widget Acordeón
+            $( "#accordion" ).accordion({
+                collapsible: true, // Permite cerrar todas
+                active: false      // Empieza todo cerrado
+            });
+        });
+    </script>
+</body>
+</html>
