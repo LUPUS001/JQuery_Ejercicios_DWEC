@@ -1,0 +1,6 @@
+#cajaExtras {
+    border: 1px solid black; /* Borde inicial obligatorio */
+    width: 300px;
+    height: 100px;
+    margin-top: 20px;
+}
